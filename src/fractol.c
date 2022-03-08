@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: cbridget <cbridget@student-21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:43:08 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/06 17:31:41 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:15:43 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-
+#include "mlx.h"
+#include <math.h>
 
 #include <stdio.h>
 
@@ -26,6 +26,8 @@ typedef struct	s_data
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void put_square(int size, t_data *img);
+void put_circle(double y0, double x0, double r, t_data *img);
+void put_triangles(int start_y, int start_x, int hight, t_data *img);
 
 int	main(void)
 {
@@ -39,9 +41,86 @@ int	main(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lenght, &img.endian);
 //	my_mlx_pixel_put(&img, 500, 500, 0x00FF0000);
 	put_square(200, &img);
+	put_circle(200, 500, 100, &img);
+	put_circle(600, 500, 200, &img);
+	put_triangles(100, 700, 150, &img);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return 0;
+}
+
+void put_triangles(int start_y, int start_x, int hight, t_data *img)
+{
+	int j;
+	int i = 0;
+	while (i < hight)
+	{
+		int r = 255;
+		int g = 255;
+		int b = 255;
+		j = 0;
+		while (j < hight * 2)
+		{
+			int tmp = (r<<16) | (g<<8) | b;
+			if ((hight) - i <= j && j <= hight)
+				my_mlx_pixel_put(img, start_x + j, start_y + i, tmp);
+			if ((hight) + i >= j && j >= hight)
+				my_mlx_pixel_put(img, start_x + j, start_y + i, tmp);
+			if (j < 255)
+			{
+				r--;
+				g--;
+				b--;
+			}
+			else
+			{
+				r++;
+				g++;
+				b++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void put_circle(double y0, double x0, double rad, t_data *img)
+{
+	double start_y = y0 - rad;
+	double start_x = x0 - rad;
+	int j;
+	int i = 0;
+	while (i < (int)rad * 2)
+	{
+		int r = 255;
+		int g = 255;
+		int b = 255;
+		j = 0;
+
+//sqrt((Xa - Xb) * (Xa - Xb) + (Ya - Yb) * (Ya - Yb))
+
+		while (j < (int)rad * 2)
+		{
+			int tmp = (r<<16) | (g<<8) | b;
+//			printf("dis=%f, rad=%f\n", sqrt((start_x + j - x0) * (start_x + j - x0) + (start_x + j - y0) * (start_x + j - y0)), rad);
+			if (sqrt((start_x + j - x0) * (start_x + j - x0) + (start_y + i - y0) * (start_y + i - y0)) <= rad)
+				my_mlx_pixel_put(img, (int)start_x + j, (int)start_y + i, tmp);
+			if (j < 255)
+			{
+				r--;
+				g--;
+				b--;
+			}
+			else
+			{
+				r++;
+				g++;
+				b++;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void put_square(int size, t_data *img)
