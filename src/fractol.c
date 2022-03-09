@@ -3,31 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbridget <cbridget@student-21school.ru>    +#+  +:+       +#+        */
+/*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:43:08 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/08 21:15:43 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:30:54 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include <math.h>
+#include "fractol.h"
 
-#include <stdio.h>
-
-typedef struct	s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_lenght;
-	int		endian;
-}				t_data;
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void put_square(int size, t_data *img);
-void put_circle(double y0, double x0, double r, t_data *img);
-void put_triangles(int start_y, int start_x, int hight, t_data *img);
+//void put_square(int size, t_data *img);
+//void put_circle(double y0, double x0, double r, t_data *img);
+//void put_triangles(int start_y, int start_x, int hight, t_data *img);
 
 int	main(void)
 {
@@ -36,20 +23,21 @@ int	main(void)
 	t_data	img;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1000, 1000, "Hello world!");
-	img.img = mlx_new_image(mlx, 1000, 1000);
+	mlx_win = mlx_new_window(mlx, width, hight, "Hello world!");
+	img.img = mlx_new_image(mlx, width, hight);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lenght, &img.endian);
 //	my_mlx_pixel_put(&img, 500, 500, 0x00FF0000);
-	put_square(200, &img);
-	put_circle(200, 500, 100, &img);
-	put_circle(600, 500, 200, &img);
-	put_triangles(100, 700, 150, &img);
+//	put_square(200, &img);
+//	put_circle(200, 500, 100, &img);
+//	put_circle(600, 500, 200, &img);
+//	put_triangles(100, 700, 150, &img);
+	ft_mandelbrot(&img);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return 0;
 }
 
-void put_triangles(int start_y, int start_x, int hight, t_data *img)
+/*void put_triangles(int start_y, int start_x, int hight, t_data *img)
 {
 	int j;
 	int i = 0;
@@ -171,7 +159,7 @@ void put_square(int size, t_data *img)
 		}
 		i++;
 	}
-}
+}*/
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
