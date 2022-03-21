@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: cbridget <cbridget@student-21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:55:44 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/10 20:08:12 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/21 16:09:28 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_mandelbrot(t_data *img)
 		}
 		i++;
 	}
-	img = 0;
-	create_color();
+//	img = 0;
+	create_color(img);
 }
 
 unsigned int	ft_mandelbrot_color(double x, double y)
@@ -49,9 +49,9 @@ unsigned int	ft_mandelbrot_color(double x, double y)
 	int		i;
 	int		max_iter;
 
-	x0 = 0.5;
-	y0 = 0.5;
-	max_iter = 250;
+	x0 = x;
+	y0 = y;
+	max_iter = 1000;
 	i = 0;
 	while (x * x + y * y < 4 && i < max_iter)
 	{
@@ -67,13 +67,13 @@ unsigned int	ft_mandelbrot_color(double x, double y)
 		return (create_color(i));*/
 }
 
-unsigned int	create_color()
+unsigned int	create_color(t_data *img)
 {
 	int	i = 0;
 	int	j = 0;
 	int	tmp;
-	int numitpp[width * hight];
-	double hue[width][hight] = {};
+	int numitpp[1000] = {0};
+	double hue[width][hight] = {0};
 
 	while (i < hight)
 	{
@@ -86,39 +86,51 @@ unsigned int	create_color()
 		}
 		i++;
 	}
-	i = 0;;
-	int total = 0;
-	while (i < width * hight)
+	i = 0;
+	long total = 0;
+	while (i < 1000)
 	{
 		total += numitpp[i];
 		i++;
 	}
 	i = j = 0;
+//	printf("%d\n", numitpp[1]);
 	while (i < hight)
 	{
 		j = 0;
 		while (j < width)
 		{
 			tmp = 0;
-			while (tmp < itcount[j][i])
+			while (tmp <= itcount[j][i])
 			{
-				hue[j][i] += numitpp[tmp] / total;
+				hue[j][i] += (double)numitpp[tmp] / (double)total;
+				if (hue[j][i] > 1)
+					printf("%f ", hue[j][i]);
 				tmp++;
 			}
 			j++;
 		}
 		i++;
 	}
-	i = j = 0;
+
+	int palette[5];
+	palette[0] = 0xffffff;
+	palette[1] = 0xff9f9f;
+	palette[2] = 0xce4646;
+	palette[3] = 0x840c0c;
+	palette[4] = 0x0;
+	i = 0;
 	while (i < hight)
 	{
 		j = 0;
 		while (j < width)
 		{
-			printf("%f ", hue[j][i]);
+//			if (hue[j][i] > 1)
+//				printf("%d ", (int)hue[j][i]);
+			my_mlx_pixel_put(img, j, i, palette[(int)hue[j][i]]);
 			j++;
 		}
-		printf("\n");
+//		printf("\n");
 		i++;
 	}
 	return (0xff);
