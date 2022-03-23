@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbridget <cbridget@student-21school.ru>    +#+  +:+       +#+        */
+/*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:41:25 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/21 14:24:00 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:20:41 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # define hight 1000
 # define width 1000
 
+typedef struct s_vars {
+	void *mlx;
+	void *win;
+} t_vars;
+
+
 typedef struct	s_data
 {
 	void	*img;
@@ -31,8 +37,7 @@ typedef struct	s_data
 }				t_data;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	ft_mandelbrot(/*t_data *img*/);
+void	ft_mandelbrot(t_data *img);
 unsigned int	ft_mandelbrot_color(double x, double y);
-unsigned int	create_color(t_data *img);
 
 #endif
