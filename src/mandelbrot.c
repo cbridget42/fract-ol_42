@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void	ft_mandelbrot(t_data *img)
+void	ft_mandelbrot(t_envf *env_f)
 {
 	unsigned int color;
 	unsigned int x;
@@ -26,10 +26,11 @@ void	ft_mandelbrot(t_data *img)
 		y = 0;
 		while (y < hight)
 		{
-			color = ft_mandelbrot_color((-2) + ((double)x / (double)width) * (2 - (-2)), (-2) + ((double)y / (double)hight) * (2 - (-2)));
+//			color = ft_mandelbrot_color((-2) + ((double)x / (double)width) * (2 - (-2)), (-2) + ((double)y / (double)hight) * (2 - (-2)));
+			color = ft_mandelbrot_color(((double)x - (double)width / 2) / env_f->coords.scale + env_f->coords.c_x, ((double)y - (double)width / 2) / env_f->coords.scale + env_f->coords.c_y);
 //			my_mlx_pixel_put(img, x, y, color);
 			if (color == 50)
-				my_mlx_pixel_put(img, x, y, 0x0);
+				my_mlx_pixel_put(&env_f->img, x, y, 0x0);
 			else
 			{
 				/*k = 1 - (double)color / 50;
@@ -42,7 +43,7 @@ void	ft_mandelbrot(t_data *img)
 				rgb[1] = (unsigned char)(18 * (1 - k) * pow(k, 3) * 255);
 				rgb[2] = (unsigned char)(144 * pow((1 - k), 2) * pow(k, 2) * 255);
 				rgb[3] = (unsigned char)(1 * pow((1 - k), 3) * k * 255);
-				my_mlx_pixel_put(img, x , y, *(int*)rgb);
+				my_mlx_pixel_put(&env_f->img, x , y, *(int*)rgb);
 			}
 			y++;
 		}

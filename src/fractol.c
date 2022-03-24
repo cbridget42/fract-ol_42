@@ -6,40 +6,64 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:43:08 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/23 18:36:56 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/24 15:30:17by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	close(int keycode, t_vars *vars);
+int	h_keyb(int keycode, t_envf *env_f);
+int	m_mouse(int x, int y, t_envf *env_f);
 
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	t_envf env_f;
 
-	t_vars	vars;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, width, hight, "fractol");
-	img.img = mlx_new_image(mlx, width, hight);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lenght, &img.endian);
-	ft_mandelbrot(&img);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	vars.mlx = mlx;
-	vars.win = mlx_win;
-	mlx_hook(mlx_win, 2, 1L<<0, close, &vars);
-	mlx_loop(mlx);
+	env_f.mlx = mlx_init();
+	env_f.win = mlx_new_window(env_f.mlx, width, hight, "fractol");
+	env_f.img.img = mlx_new_image(env_f.mlx, width, hight);
+	env_f.img.addr = mlx_get_data_addr(env_f.img.img, &env_f.img.bits_per_pixel, &env_f.img.line_lenght, &env_f.img.endian);
+	env_f.coords.scale = 250;
+	env_f.coords.c_x = 0;
+	env_f.coords.c_y = 0;
+	ft_mandelbrot(&env_f);
+	mlx_put_image_to_window(env_f.mlx, env_f.win, env_f.img.img, 0, 0);
+	mlx_key_hook(env_f.win, h_keyb, &env_f);
+	mlx_hook(env_f.win, 6, 1L<<6, m_mouse, &env_f);
+	mlx_loop(env_f.mlx);
 	return 0;
 }
 
-int	close(int keycode, t_vars *vars)
+int	m_mouse(int x, int y, t_envf *env_f)
+{
+	env_f->coords.x = x;
+	env_f->coords.y = y;
+	return (0);
+}
+
+int	h_keyb(int keycode, t_envf *env_f)
 {
 	printf("kc=%d\n", keycode);
+	if (keycode == 34)
+	{
+		mlx_destroy_image(env_f->mlx, env_f->win);
+		mlx_clear_window(env_f->mlx, env_f->win);
+//		printf("coords.c_x=%f, coords.c_y=%f\n", env_f->coords.c_x, env_f->coords.c_y);
+		env_f->coords.c_x = env_f->coords.x;
+		env_f->coords.c_y = env_f->coords.y;
+		printf("coords.c_x=%f, coords.c_y=%f\n", env_f->coords.c_x, env_f->coords.c_y);
+		env_f->coords.scale += 50;
+		ft_mandelbrot(env_f);
+		mlx_put_image_to_window(env_f->mlx, env_f->win, env_f->img.img, 0, 0);
+//		printf("in_close: vars->coords.x=%d, vars->coords.y=%d\n", env_f->coords.x, env_f->coords.y);
+	}
 	if (keycode == 53)
-		mlx_destroy_window(vars->mlx, vars->win);
+	{
+//		mlx_destroy_image(vars->mlx, vars->win);
+		mlx_clear_window(env_f->mlx, env_f->win);
+		mlx_destroy_window(env_f->mlx, env_f->win);
+		exit(0);
+	}
 	return (0);
 }
 
