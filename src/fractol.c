@@ -51,7 +51,7 @@ int	h_keyb(int keycode, t_envf *env_f)
 //		printf("b=%f\n", ((double)150 - (double)width / 2) / env_f->coords.scale + env_f->coords.c_x);
 //		printf("af=%f\n", ((double)150 - (double)width / 2) / env_f->coords.scale + (env_f->coords.x - 500));
 		printf("coords.c_x=%f, coords.c_y=%f\n", env_f->coords.c_x, env_f->coords.c_y);
-		env_f->coords.scale += 1000;
+		env_f->coords.scale *= 2;
 		ft_mandelbrot(env_f);
 		mlx_put_image_to_window(env_f->mlx, env_f->win, env_f->img.img, 0, 0);
 //		printf("in_close: vars->coords.x=%d, vars->coords.y=%d\n", env_f->coords.x, env_f->coords.y);
