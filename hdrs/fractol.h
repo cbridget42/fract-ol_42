@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: cbridget <cbridget@student-21school.ru>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:41:25 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/24 15:25:46 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:16:25 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,19 @@
 # define hight 1000
 # define width 1000
 
+typedef struct s_flags {
+	int	frc;
+	int	crk;
+} t_flags;
+
 typedef struct s_coords {
 	int x;
 	int y;
+	unsigned int max_it;
+	unsigned int cof;
 	double c_x;
 	double c_y;
-	double scale;
+	unsigned long long scale;
 } t_coords;
 
 typedef struct	s_data
@@ -44,6 +51,7 @@ typedef struct s_envf {
 	void *win;
 	t_coords coords;
 	t_data img;
+	t_flags flags;
 } t_envf;
 
 
@@ -56,8 +64,9 @@ typedef struct s_envf {
 	int		endian;
 }				t_data;*/
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	ft_mandelbrot(t_envf *env_f);
-unsigned int	ft_mandelbrot_color(double x, double y);
+int			ft_close(t_envf *env_f);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			ft_mandelbrot(t_envf *env_f);
+unsigned int	ft_mandelbrot_color(t_envf *env_f, double x, double y);
 
 #endif
