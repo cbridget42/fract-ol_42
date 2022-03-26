@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbridget <cbridget@student-21school.ru>    +#+  +:+       +#+        */
+/*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:41:25 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/25 17:16:25 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/26 17:10:11 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 typedef struct s_flags {
 	int	frc;
-	int	crk;
+	int	drw;
 } t_flags;
 
 typedef struct s_coords {
@@ -54,19 +54,22 @@ typedef struct s_envf {
 	t_flags flags;
 } t_envf;
 
-
-/*typedef struct	s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_lenght;
-	int		endian;
-}				t_data;*/
-
 int			ft_close(t_envf *env_f);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void			ft_mandelbrot(t_envf *env_f);
-unsigned int	ft_mandelbrot_color(t_envf *env_f, double x, double y);
+void			ft_fractals(t_envf *env_f);
+unsigned int	ft_mandelbrot(t_envf *env_f, double x, double y);
+void	error_m(int err);
+void	parser(int argc, char **argv, t_envf *env_f);
+void	init_f(t_envf *env_f);
+void	new_img(t_envf *env_f);
+int	drawing_one(unsigned int i, t_envf *env_f, double x, double y);
+int	m_mouse(int x, int y, t_envf *env_f);
+int	ft_close(t_envf *env_f);
+void	frc_hk(t_envf *env_f);
+void	increase_c(t_envf *env_f);
+int	h_keyb(int keycode, t_envf *env_f);
+double	coord_trn(double x_y, t_envf *env_f, int mod);
+void	decrease_c(t_envf *env_f);
+void	arrow_m(t_envf *env_f, int kc);
 
 #endif
