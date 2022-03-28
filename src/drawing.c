@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:37:59 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/26 15:08:30 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/28 16:56:04 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	drawing_one(unsigned int i, t_envf *env_f, double x, double y)
 			cl = 0;
 		cl = 8 * sqrt(cl);
 		rgb[0] = (unsigned char)0x0;
-		rgb[1] = (unsigned char)(floor(cl * 5)) % 255;
-		rgb[2] = (unsigned char)(floor(cl * 2)) % 255;
-		rgb[3] = (unsigned char)(floor(cl * 3)) % 255;
+		rgb[1] = (unsigned char)(floor(cl * /*2*/5)) % 255;
+		rgb[2] = (unsigned char)(floor(cl * /*9*/2)) % 255;
+		rgb[3] = (unsigned char)(floor(cl * /*1*/3)) % 255;
 		return (*(int *)rgb);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:23:17 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/26 16:22:43 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/28 16:16:39 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	init_f(t_envf *env_f)
 	env_f->win = mlx_new_window(env_f->mlx, width, hight, "fractol");
 	env_f->img.img = mlx_new_image(env_f->mlx, width, hight);
 	env_f->img.addr = mlx_get_data_addr(env_f->img.img, &env_f->img.bits_per_pixel, &env_f->img.line_lenght, &env_f->img.endian);
-	env_f->coords.scale = 250;
-	env_f->coords.max_it = 350;
-	env_f->coords.cof = 50;
+	env_f->coords.scale = 100;
+	env_f->coords.max_it = 100;
+	env_f->coords.cof = 15;
 	env_f->coords.c_x = 0;
 	env_f->coords.c_y = 0;
 	env_f->flags.drw = 0;
