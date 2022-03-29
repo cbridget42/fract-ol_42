@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:43:46 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/28 17:05:25 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:46:20 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,40 @@ int	m_mouse(int x, int y, t_envf *env_f)
 	return (0);
 }
 
+void	ch_iter(int kc, t_envf *env_f)
+{
+	new_img(env_f);
+	if (kc == 31)
+		env_f->coords.max_it += 500;
+	else if (env_f->coords.max_it > 500)
+		env_f->coords.max_it -= 500;
+	ft_fractals(env_f);
+}
+
 void	change_dr(t_envf *env_f)
 {
 	new_img(env_f);
-	env_f->flags.drw = 1;
+	if (env_f->flags.drw < 2)
+		env_f->flags.drw += 1;
+	else
+		env_f->flags.drw = 0;
+	ft_fractals(env_f);
+}
+
+void	change_drtwo(t_envf *env_f)
+{
+	new_img(env_f);
+	env_f->flags.clrs1 = ft_rand_r(&env_f->flags.seed) % 55;
+	env_f->flags.clrs2 = ft_rand_r(&env_f->flags.seed) % 55;
+	env_f->flags.clrs3 = ft_rand_r(&env_f->flags.seed) % 55;
+	env_f->flags.cof_c1 = ft_rand_r(&env_f->flags.seed) % 255;
+	if (env_f->flags.cof_c1 == 0)
+		env_f->flags.cof_c1 = 250;
+	env_f->flags.cof_c2 = ft_rand_r(&env_f->flags.seed) % 255;
+	if (env_f->flags.cof_c2 == 0)
+		env_f->flags.cof_c2 = 250;
+	env_f->flags.cof_c3 = ft_rand_r(&env_f->flags.seed) % 255;
+	if (env_f->flags.cof_c3 == 0)
+		env_f->flags.cof_c3 = 255;
 	ft_fractals(env_f);
 }

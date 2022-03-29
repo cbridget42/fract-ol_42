@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:52:56 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/28 16:40:50 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:32:17 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	parser(int argc, char **argv, t_envf *env_f)
 		env_f->coords.j_x = 0.28;
 		env_f->coords.j_y = 0.0113;
 	}
+	else if (!ft_strncmp(argv[i], "Burning_ship", 13))
+		env_f->flags.frc = 2;
 	else
 		error_m(55);
 	if (argc == 4 && env_f->flags.frc == 1)

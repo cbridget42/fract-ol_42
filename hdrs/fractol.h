@@ -26,6 +26,13 @@
 typedef struct s_flags {
 	int	frc;
 	int	drw;
+	int	cof_c1;
+	int	cof_c2;
+	int	cof_c3;
+	int	clrs1;
+	int	clrs2;
+	int	clrs3;
+	int	seed;
 } t_flags;
 
 typedef struct s_coords {
@@ -62,6 +69,7 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			ft_fractals(t_envf *env_f);
 unsigned int	ft_mandelbrot(t_envf *env_f, double x, double y);
 unsigned int	ft_julia(t_envf *env_f, double x, double y);
+unsigned int	ft_burning_ship(t_envf *env_f, double x, double y);
 void	error_m(int err);
 void	parser(int argc, char **argv, t_envf *env_f);
 void	init_f(t_envf *env_f);
@@ -72,6 +80,7 @@ int	m_mouse(int x, int y, t_envf *env_f);
 int	ft_close(t_envf *env_f);
 void	frc_hk(t_envf *env_f);
 void	change_dr(t_envf *env_f);
+void	change_drtwo(t_envf *env_f);
 void	increase_c(t_envf *env_f);
 int	h_keyb(int keycode, t_envf *env_f);
 double	coord_trn(double x_y, t_envf *env_f, int mod);
@@ -82,5 +91,10 @@ double	ft_atof(char *num);
 double	ft_atofr(double x);
 int	ft_atoi_s(const char *str, int *overflow);
 int	skipp(const char *str, int *sign);
+int	drawing_three(unsigned int i, t_envf *env_f);
+void	ch_iter(int kc, t_envf *env_f);
+
+int	ft_do_rand(int *ctx);
+int ft_rand_r(int *ctx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:23:17 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/28 16:16:39 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:26:39 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,18 @@ void	init_f(t_envf *env_f)
 	env_f->img.addr = mlx_get_data_addr(env_f->img.img, &env_f->img.bits_per_pixel, &env_f->img.line_lenght, &env_f->img.endian);
 	env_f->coords.scale = 100;
 	env_f->coords.max_it = 100;
-	env_f->coords.cof = 15;
+	env_f->coords.cof = 1;
 	env_f->coords.c_x = 0;
 	env_f->coords.c_y = 0;
 	env_f->flags.drw = 0;
+
+	env_f->flags.cof_c1 = 255;
+	env_f->flags.cof_c2 = 255;
+	env_f->flags.cof_c3 = 255;
+	env_f->flags.clrs1 = 5;
+	env_f->flags.clrs2 = 2;
+	env_f->flags.clrs3 = 3;
+	env_f->flags.seed = RAND_MAX;
 }
 
 void	new_img(t_envf *env_f)

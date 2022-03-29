@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:28:50 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/28 17:01:10 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:25:32 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	h_keyb(int keycode, t_envf *env_f)
 		ft_close(env_f);
 	if (keycode == 38)
 		change_dr(env_f);
+	if (keycode == 4)
+		change_drtwo(env_f);
+	if (keycode == 31 || keycode == 35)
+		ch_iter(keycode, env_f);
 	return (0);
 }
 
@@ -55,9 +59,10 @@ void	increase_c(t_envf *env_f)
 	env_f->coords.c_y = coord_trn(env_f->coords.y, env_f, 1);
 	if (env_f->coords.scale * 2 < env_f->coords.scale)
 		ft_close(env_f);
-	env_f->coords.scale *= 2;
+	env_f->coords.scale *= /*2*/1.2;
 	env_f->coords.max_it += env_f->coords.cof;
-	env_f->coords.cof += 15;
+	if (env_f->coords.max_it % 2)
+		env_f->coords.cof += 1;
 	printf("c_x=%f, c_y=%f, scale=%llu, it=%d\n", env_f->coords.c_x, env_f->coords.c_y, env_f->coords.scale, env_f->coords.max_it);
 	ft_fractals(env_f);
 }
@@ -69,9 +74,11 @@ void	decrease_c(t_envf *env_f)
 	new_img(env_f);
 	env_f->coords.c_x = coord_trn(env_f->coords.x, env_f, 0);
 	env_f->coords.c_y = coord_trn(env_f->coords.y, env_f, 1);
-	env_f->coords.scale /= 2;
-	env_f->coords.cof -= 15;
-	env_f->coords.max_it -= env_f->coords.cof;
+	env_f->coords.scale /= /*2*/1.2;
+	if (env_f->coords.max_it % 2)
+		env_f->coords.cof -= 1;
+	if (env_f->coords.max_it < env_f->coords.cof)
+		env_f->coords.max_it -= env_f->coords.cof;
 	printf("c_x=%f, c_y=%f, scale=%llu, it=%d\n", env_f->coords.c_x, env_f->coords.c_y, env_f->coords.scale, env_f->coords.max_it);
 	ft_fractals(env_f);
 }
