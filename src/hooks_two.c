@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:43:46 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/30 13:17:37 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:36:57 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ch_iter(int kc, t_envf *env_f)
 	else if (env_f->coords.max_it > 10)
 		env_f->coords.max_it -= 10;
 	else if (env_f->coords.max_it > 0)
-		env_f->coords.max_it -=1;
+		env_f->coords.max_it -= 1;
 	ft_fractals(env_f);
 }
 

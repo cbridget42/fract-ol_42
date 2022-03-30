@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:28:50 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/30 16:48:29 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:36:23 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	mh_keyb(int button, int x, int y, t_envf *env_f)
 void	frc_hk(t_envf *env_f)
 {
 	mlx_key_hook(env_f->win, h_keyb, env_f);
-	mlx_hook(env_f->win, 6, 1L<<6, m_mouse, env_f);
+	mlx_hook(env_f->win, 6, 1L << 6, m_mouse, env_f);
 	mlx_hook(env_f->win, 17, 0L, ft_close, env_f);
 	mlx_mouse_hook(env_f->win, mh_keyb, env_f);
 	mlx_loop(env_f->mlx);
@@ -73,19 +73,5 @@ void	decrease_c(t_envf *env_f)
 	env_f->coords.scale /= 1.2;
 	if (env_f->coords.max_it > env_f->coords.cof)
 		env_f->coords.max_it -= env_f->coords.cof;
-	ft_fractals(env_f);
-}
-
-void	arrow_m(t_envf *env_f, int kc)
-{
-	new_img(env_f);
-	if (kc == 125)
-		env_f->coords.c_y += (double)SHIFT / env_f->coords.scale;
-	else if (kc == 126)
-		env_f->coords.c_y -= (double)SHIFT / env_f->coords.scale;
-	else if (kc == 123)
-		env_f->coords.c_x -= (double)SHIFT / env_f->coords.scale;
-	else
-		env_f->coords.c_x += (double)SHIFT / env_f->coords.scale;
 	ft_fractals(env_f);
 }
