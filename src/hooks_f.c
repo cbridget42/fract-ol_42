@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:28:50 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/29 17:25:32 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:48:29 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	h_keyb(int keycode, t_envf *env_f)
 {
-	printf("kc=%d\n", keycode);
 	if (keycode == 34)
 		increase_c(env_f);
 	if (keycode == 40)
@@ -59,11 +58,8 @@ void	increase_c(t_envf *env_f)
 	env_f->coords.c_y = coord_trn(env_f->coords.y, env_f, 1);
 	if (env_f->coords.scale * 2 < env_f->coords.scale)
 		ft_close(env_f);
-	env_f->coords.scale *= /*2*/1.2;
+	env_f->coords.scale *= 1.2;
 	env_f->coords.max_it += env_f->coords.cof;
-	if (env_f->coords.max_it % 2)
-		env_f->coords.cof += 1;
-	printf("c_x=%f, c_y=%f, scale=%llu, it=%d\n", env_f->coords.c_x, env_f->coords.c_y, env_f->coords.scale, env_f->coords.max_it);
 	ft_fractals(env_f);
 }
 
@@ -74,26 +70,22 @@ void	decrease_c(t_envf *env_f)
 	new_img(env_f);
 	env_f->coords.c_x = coord_trn(env_f->coords.x, env_f, 0);
 	env_f->coords.c_y = coord_trn(env_f->coords.y, env_f, 1);
-	env_f->coords.scale /= /*2*/1.2;
-	if (env_f->coords.max_it % 2)
-		env_f->coords.cof -= 1;
-	if (env_f->coords.max_it < env_f->coords.cof)
+	env_f->coords.scale /= 1.2;
+	if (env_f->coords.max_it > env_f->coords.cof)
 		env_f->coords.max_it -= env_f->coords.cof;
-	printf("c_x=%f, c_y=%f, scale=%llu, it=%d\n", env_f->coords.c_x, env_f->coords.c_y, env_f->coords.scale, env_f->coords.max_it);
 	ft_fractals(env_f);
 }
 
 void	arrow_m(t_envf *env_f, int kc)
 {
-	printf("+: %f\n", (double)f_shift / env_f->coords.scale);
 	new_img(env_f);
 	if (kc == 125)
-		env_f->coords.c_y += (double)f_shift / env_f->coords.scale;
+		env_f->coords.c_y += (double)SHIFT / env_f->coords.scale;
 	else if (kc == 126)
-		env_f->coords.c_y -= (double)f_shift / env_f->coords.scale;
+		env_f->coords.c_y -= (double)SHIFT / env_f->coords.scale;
 	else if (kc == 123)
-		env_f->coords.c_x -= (double)f_shift / env_f->coords.scale;
+		env_f->coords.c_x -= (double)SHIFT / env_f->coords.scale;
 	else
-		env_f->coords.c_x += (double)f_shift / env_f->coords.scale;
+		env_f->coords.c_x += (double)SHIFT / env_f->coords.scale;
 	ft_fractals(env_f);
 }

@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:55:44 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/29 15:46:37 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:47:58 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_fractals(t_envf *env_f)
 	unsigned int y;
 
 	x = 0;
-	while (x < width)
+	while (x < WIDTH)
 	{
 		y = 0;
-		while (y < hight)
+		while (y < HIGHT)
 		{
 			if (env_f->flags.frc == 0)
 				color = ft_mandelbrot(env_f, coord_trn(x, env_f, 0), coord_trn(y, env_f, 1));

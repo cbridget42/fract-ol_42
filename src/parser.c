@@ -6,12 +6,13 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:52:56 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/29 15:32:17 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:33:39 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "libft.h"
+#include "ft_printf.h"
 
 void	parser(int argc, char **argv, t_envf *env_f)
 {
@@ -44,12 +45,13 @@ void	parser(int argc, char **argv, t_envf *env_f)
 void	error_m(int err)
 {
 	if (err == 5)
-		write(1, "error: wrong number of arguments\n", 28);
+		ft_printf("error: wrong number of arguments\n");
 	else if (err == 55)
-		write(1, "error: first arg is invalid\n", 28);
+		ft_printf("error: first arg is invalid\n");
 	else
-		write(1, "error: wrong number for Julia\n", 30);
-	write(1, "first arg: type of fractal (Mandelbrot or Julia)\n", 49);
+		ft_printf("error: wrong number for Julia\n");
+	ft_printf("first arg: type of fractal (Mandelbrot or Julia or Burning_ship)\n");
+	ft_printf("fot Julia you can enter real and imaginary parts (format like 0.05)\n");
 	exit(err);
 }
 
@@ -62,10 +64,11 @@ double	ft_atof(char *num)
 
 	i = -1;
 	overflow = 0;
+	ch_db(num);
 	res = ft_atoi_s(num, &overflow);
 	if (overflow)
 		error_m(155);
-	while (*num != '.' && ft_isdigit(*num))
+	while (*num != '.' && (ft_isdigit(*num) || *num == '-'))
 		num++;
 	if (*num != '.')
 		return (ft_atofr(res));
@@ -78,6 +81,23 @@ double	ft_atof(char *num)
 	while (ft_isdigit(num[++i]))
 		tmp /= 10;
 	return (ft_atofr(res + tmp));
+}
+
+void	ch_db(char *str)
+{
+	if (*str != '-' && !ft_isdigit(*str) && *str != '.')
+		error_m(160);
+	str++;
+	while (ft_isdigit(*str))
+		str++;
+	if (*str == '.')
+		str++;
+	else
+		error_m(160);
+	while (ft_isdigit(*str))
+		str++;
+	if (*str)
+		error_m(160);
 }
 
 double	ft_atofr(double x)
