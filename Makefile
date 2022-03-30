@@ -3,32 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cbridget <cbridget@student-21school.ru>    +#+  +:+       +#+         #
+#    By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 19:40:05 by cbridget          #+#    #+#              #
-#    Updated: 2022/03/05 13:10:16 by cbridget         ###   ########.fr        #
+#    Updated: 2022/03/30 16:05:24 by cbridget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-#NAME_B = checker
-
 HEAD = hdrs/fractol.h
 
-#HEAD_B = hdrs/checker_bonus.h
-
-SRC = fractol.c
-
-#SRC_B =
+SRC = main.c fractals.c parser.c init_f.c drawing.c hooks_f.c hooks_two.c
 
 OBJ = $(addprefix obj/,$(SRC:.c=.o))
 
-#OBJ_B = $(addprefix obj/,$(SRC_B:.c=.o))
-
 BUILD_FOLDER := $(shell mkdir -p obj)
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g3
 
 CC = cc
 
@@ -40,18 +32,12 @@ LIB :
 	$(MAKE) bonus -C libft
 
 $(NAME) : $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -Lminilibx-linux -lmlx -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -Llibft -lftprintf -o $(NAME)
 
-#$(NAME_B) : $(OBJ_B)
-#	$(CC) $(FLAGS) $(OBJ_B) -Llibft -lft -o $(NAME_B)
+obj/%.o : src/%.c $(HEAD) Makefile libft/libftprintf.a
+	$(CC) $(FLAGS) -iquote hdrs -iquote libft/headers -iquote libft/libft -Imlx -c $< -o $@
 
-obj/%.o : src/%.c $(HEAD) Makefile libft/libft.a
-	$(CC) $(FLAGS) -iquote hdrs -iquote minilibx-linux -c $< -o $@
-
-#obj/%.o : src/bonus/%.c $(HEAD_B) Makefile libft/libft.a
-#	$(CC) $(FLAGS) -iquote hdrs -iquote libft -c $< -o $@
-
-#bonus : LIB $(NAME_B)
+bonus : all
 
 clean :
 	rm -rf obj
@@ -60,7 +46,6 @@ clean :
 fclean :
 	rm -rf obj
 	rm -f $(NAME)
-	rm -f $(NAME_B)
 	$(MAKE) fclean -C libft
 
 re :
