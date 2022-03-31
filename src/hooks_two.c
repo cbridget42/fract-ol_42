@@ -6,11 +6,12 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:43:46 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/30 17:36:57 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:35:51 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "ft_printf.h"
 
 int	ft_close(t_envf *env_f)
 {

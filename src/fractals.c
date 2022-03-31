@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:55:44 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/30 17:34:10 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:54:07 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ unsigned int	ft_burning_ship(t_envf *env_f, double x, double y)
 		zx = tmp;
 		i++;
 	}
-	if (env_f->flags.drw == 1)
+	if (env_f->flags.drw == 0)
 		return (drawing_two(i, env_f));
 	else
 		return (drawing_three(i, env_f));

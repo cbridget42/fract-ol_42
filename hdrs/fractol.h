@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:41:25 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/30 16:45:12 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:34:30 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "mlx.h"
 # include <math.h>
-# include <stdlib.h>
+//# include <stdlib.h>
 
 # define HIGHT 1000
 # define WIDTH 1000
@@ -87,9 +87,9 @@ void			decrease_c(t_envf *env_f);
 void			arrow_m(t_envf *env_f, int kc);
 int				mh_keyb(int button, int x, int y, t_envf *env_f);
 double			ft_atof(char *num);
+double			ft_atof_two(char *num, int *overflow, int *sign, int res);
 double			ft_atofr(double x);
-int				ft_atoi_s(const char *str, int *overflow);
-int				skipp(const char *str, int *sign);
+int				ft_atoi_s(const char *str, int *overflow, int *sign);
 int				drawing_three(unsigned int i, t_envf *env_f);
 void			ch_iter(int kc, t_envf *env_f);
 int				ft_do_rand(int *ctx);

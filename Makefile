@@ -6,7 +6,7 @@
 #    By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 19:40:05 by cbridget          #+#    #+#              #
-#    Updated: 2022/03/30 17:36:39 by cbridget         ###   ########.fr        #
+#    Updated: 2022/03/31 16:50:49 by cbridget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fractol
 HEAD = hdrs/fractol.h
 
 SRC = main.c fractals.c parser.c init_f.c drawing.c hooks_f.c hooks_two.c \
-hooks_three.c
+hooks_three.c errors.c
 
 OBJ = $(addprefix obj/,$(SRC:.c=.o))
 

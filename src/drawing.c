@@ -6,11 +6,12 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:37:59 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/30 16:53:17 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:58:30 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "ft_printf.h"
 
 int	drawing_one(unsigned int i, t_envf *env_f, double x, double y)
 {
@@ -47,7 +48,7 @@ int	drawing_two(unsigned int i, t_envf *env_f)
 	{
 		k = (double)i / (double)env_f->coords.max_it;
 		rgb[0] = (unsigned char)0x0;
-		rgb[1] = (unsigned char)(18 * (1 - k) * pow(k, 3) \
+		rgb[1] = (unsigned char)(env_f->flags.clrs1 * (1 - k) * pow(k, 3) \
 		* env_f->flags.cof_c1);
 		rgb[2] = (unsigned char)(144 * pow((1 - k), 2) \
 		* pow(k, 2) * env_f->flags.cof_c2);
