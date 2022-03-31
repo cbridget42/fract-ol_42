@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:41:25 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/31 16:34:30 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/03/31 20:38:05 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "mlx.h"
 # include <math.h>
-//# include <stdlib.h>
 
 # define HIGHT 1000
 # define WIDTH 1000
