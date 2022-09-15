@@ -6,7 +6,7 @@
 #    By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 15:17:31 by cbridget          #+#    #+#              #
-#    Updated: 2021/11/28 15:54:31 by cbridget         ###   ########.fr        #
+#    Updated: 2022/09/15 18:43:14 by cbridget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ = $(addprefix obj/,$(LIST:.c=.o))
 
 BUILD_FOLDER := $(shell mkdir -p obj)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O2
 
 CC = gcc
 

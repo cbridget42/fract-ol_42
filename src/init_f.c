@@ -6,7 +6,7 @@
 /*   By: cbridget <cbridget@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:23:17 by cbridget          #+#    #+#             */
-/*   Updated: 2022/03/31 15:58:05 by cbridget         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:26:25 by cbridget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_f(t_envf *env_f)
 	tmp = (int *)malloc(sizeof(int) * 1);
 	if (!tmp)
 		error_m(5);
-	env_f->flags.seed = (int)tmp;
+	env_f->flags.seed = (unsigned long)tmp;
 	free(tmp);
 	env_f->mlx = mlx_init();
 	env_f->win = mlx_new_window(env_f->mlx, WIDTH, HIGHT, "fractol");
