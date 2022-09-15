@@ -57,3 +57,5 @@ this library includes basic necessary tools to open window, create images and de
 <td valign="top" align="center"><kbd>&nbsp;k&nbsp;</kbd> and <kbd>&nbsp;mouse&nbsp;</kbd></td>
 </tr>
 <tr>
+</tbody>
+</table>
