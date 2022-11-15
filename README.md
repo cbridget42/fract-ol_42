@@ -82,7 +82,6 @@ Coding style: [norminette](https://github.com/cbridget42/fract-ol_42/blob/main/s
 ### ScreenShots:
 ![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.08.58%20PM.png)
 ![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.12.24%20PM.png)
-![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-11-15%20at%204.44.23%20PM.png)
 ![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.15.18%20PM.png)
 ![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.17.23%20PM.png)
   
