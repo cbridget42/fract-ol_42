@@ -1,10 +1,9 @@
 # fract-ol  
-  
 It's a basic computer graphics project.  
   
-### Requirements:
 You need to draw some fractals such as the julia set and Mandelbrot set, use the school graphical library,  
 this library includes basic necessary tools to open window, create images and deal with Keyboard and mouse.  
+If you don't get what fractals are, you can read about it [here](https://en.wikipedia.org/wiki/Fractal)
 * Mandatory part  
 	+ 1-The mouse wheel zooms in and out, almost infinitely.  
 	+ 2-You must be able to create different Julia sets.  
@@ -12,22 +11,27 @@ this library includes basic necessary tools to open window, create images and de
 * Bonus part  
 	+ 1-One more different fractal.  
 	+ 2-The zoom follow the actual mouse position.  
-+ 3-Make the color ranger shift.  
+	+ 3-Make the color ranger shift.  
+  
+You can see the full assignment here [subject](https://github.com/cbridget42/fract-ol_42/blob/main/subject/en.subject.pdf)
+Coding style: [norminette](https://github.com/cbridget42/fract-ol_42/blob/main/subject/en.norm.pdf)
   
 ### Usage:
 * You need to download the repository and compile the code! To do this, run:
 	```bash
 	git clone git@github.com:cbridget42/fract-ol_42.git
-	cd libft_42
+	cd fract-ol_42
 	make
 	```
 * then you will have a fractol file. Exemple usage:
 	```bash
 	./fractol Mandelbrot
 	```
-  
 	```bash
-	./fractol Julia 0.5 0.5
+	./fractol Julia 0.5 0.5 //you can replace 0.5 with any number between -1 and 1
+	```
+	```bash
+	./fractol Mandelbrot
 	```
   
 ### Keyboard shortcuts
@@ -45,16 +49,32 @@ this library includes basic necessary tools to open window, create images and de
 </thead>
 <tbody>
 <tr>
+<td valign="top" height="30px">zoom in</td>
+<td valign="top" align="center"><kbd>&nbsp;i&nbsp;</kbd> or <kbd>&nbsp;scroll wheel&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">zoom out</td>
+<td valign="top" align="center"><kbd>&nbsp;k&nbsp;</kbd> or <kbd>&nbsp;scroll wheel&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">move</td>
+<td valign="top" align="center"><kbd>&nbsp;▲&nbsp;</kbd><kbd>&nbsp;▼&nbsp;</kbd><kbd>&nbsp;◄&nbsp;</kbd><kbd>&nbsp;►&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">increase render depth</td>
+<td valign="top" align="center"><kbd>&nbsp;o&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">decrease render depth</td>
+<td valign="top" align="center"><kbd>&nbsp;p&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">change color scheme</td>
+<td valign="top" align="center"><kbd>&nbsp;h&nbsp;</kbd></td>
+</tr>
+<tr>
 <td valign="top" height="30px">Close the program</td>
 <td valign="top" align="center"><kbd>&nbsp;esc&nbsp;</kbd></td>
-</tr>
-<tr>
-<td valign="top" height="30px">image enlargement</td>
-<td valign="top" align="center"><kbd>&nbsp;i&nbsp;</kbd> and <kbd>&nbsp;mouse&nbsp;</kbd></td>
-</tr>
-<tr>
-<td valign="top" height="30px">reduce the image</td>
-<td valign="top" align="center"><kbd>&nbsp;k&nbsp;</kbd> and <kbd>&nbsp;mouse&nbsp;</kbd></td>
 </tr>
 <tr>
 </tbody>
