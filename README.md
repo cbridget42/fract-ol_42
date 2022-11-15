@@ -13,8 +13,8 @@ If you don't get what fractals are, you can read about it [here](https://en.wiki
 	+ 2-The zoom follow the actual mouse position.  
 	+ 3-Make the color ranger shift.  
   
-You can see the full assignment here [subject](https://github.com/cbridget42/fract-ol_42/blob/main/subject/en.subject.pdf)
-Coding style: [norminette](https://github.com/cbridget42/fract-ol_42/blob/main/subject/en.norm.pdf)
+You can see the full assignment here [subject](https://github.com/cbridget42/fract-ol_42/blob/main/subject/en.subject.pdf)  
+Coding style: [norminette](https://github.com/cbridget42/fract-ol_42/blob/main/subject/en.norm.pdf)  
   
 ### Usage:
 * You need to download the repository and compile the code! To do this, run:
@@ -31,11 +31,10 @@ Coding style: [norminette](https://github.com/cbridget42/fract-ol_42/blob/main/s
 	./fractol Julia 0.5 0.5 //you can replace 0.5 with any number between -1 and 1
 	```
 	```bash
-	./fractol Mandelbrot
+	./fractol Burning_ship
 	```
   
 ### Keyboard shortcuts
-
 <table width="100%">
 <thead>
 <tr>
@@ -79,3 +78,14 @@ Coding style: [norminette](https://github.com/cbridget42/fract-ol_42/blob/main/s
 <tr>
 </tbody>
 </table>
+  
+### ScreenShots:
+![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.08.58%20PM.png)
+![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.12.24%20PM.png)
+![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-11-15%20at%204.44.23%20PM.png)
+![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.15.18%20PM.png)
+![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.17.23%20PM.png)
+  
+### final score:
+![image](https://github.com/cbridget42/fract-ol_42/blob/main/images/Screen%20Shot%202022-09-15%20at%207.19.16%20PM.png)
+  
